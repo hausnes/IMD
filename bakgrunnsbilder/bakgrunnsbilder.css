@@ -1,0 +1,33 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-image: url("utsikt.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    width: fit-content;
+    font-size: 3em;
+    color: white;
+    position: relative;
+}
+
+header p {
+    background-color: white;
+    color: black;
+    width: 100px;
+    margin-top: -90px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+}
