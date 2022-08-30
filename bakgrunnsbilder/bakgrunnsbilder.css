@@ -17,7 +17,7 @@ body {
 
 header {
     width: fit-content;
-    font-size: 3em;
+    font-size: 2.5em;
     color: white;
     position: relative;
 }
@@ -26,7 +26,7 @@ header p {
     background-color: white;
     color: black;
     width: 100px;
-    margin-top: -90px;
+    margin-top: -75px;
     position: absolute;
     right: 0;
     text-align: center;
