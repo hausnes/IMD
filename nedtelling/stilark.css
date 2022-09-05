@@ -10,4 +10,11 @@ body {
 
 h1 {
     font-size: 6em;
+    display: none;
+}
+
+p {
+    position: absolute;
+    bottom: 0px;
+    display: none;
 }
