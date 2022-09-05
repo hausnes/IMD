@@ -14,8 +14,8 @@ function myTimer() {
 } 
 
 /*
-    Legge til endret farge når det nærmer seg.
-    Vere mulig å skrive inn dager, minutter ...
-    Lyder...
-    
+    - Legge til endret farge når det nærmer seg.
+    - Legge til bakgrunnsmusikk og eventuelle lydeffekter.
+    - Vere mulig å velge dato det skal telles ned til.
+    - ...    
 */
