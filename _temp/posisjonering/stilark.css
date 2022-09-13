@@ -1,0 +1,38 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body { 
+    position: relative;
+}
+
+h1 {
+   position: absolute;
+   top: 0px;
+   right: 0px;
+}
+
+p {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+img {
+    position: absolute;
+    bottom: 0px;
+    left: 500px;
+}
+
+#bilde2 {
+    position: absolute;
+    bottom: 0px;
+    left: 300px;
+}
+
+/* body > img:nth-child(1) {
+    border: 10px solid black;
+} */
