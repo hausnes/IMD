@@ -1,0 +1,59 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    height: 0;
+}
+
+header {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    background-color: beige;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+div {
+    width: 50vw;
+    border: 1px solid black;
+}
+
+.venstre {
+    background-color: rgb(190, 190, 190);
+}
+
+.hoyre {
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+a {
+    display: block;
+    border: 1px solid black;
+    padding: 1.5em;
+    background-color: rgb(220, 220, 220);
+    height: 2em;
+    width: auto;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+}
+
+a:hover {
+    background-color: rgb(195, 195, 195);
+}
