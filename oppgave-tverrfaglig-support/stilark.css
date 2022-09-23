@@ -1,0 +1,62 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas: 
+    "t t"
+    "v h"
+    "v h"
+    "v h"
+    "v h"
+    ;
+}
+
+header   { grid-area: t; }
+#venstre { grid-area: v; }
+#hoyre   { grid-area: h; }
+
+header {
+    background-color: rgb(232, 232, 232);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#venstre, #hoyre {
+    display: grid;
+    justify-items: center;
+    /* align-content: center; */
+    /* border: 1px solid black; */
+    padding: 1em;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#hoyre > .boks > nav > a {
+    display: block;
+    border: 1px solid black;
+    padding: 1.5em;
+    background-color: rgb(220, 220, 220);
+    height: 2em;
+    width: auto;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+}
+
+#hoyre > .boks > nav > a:hover {
+    background-color: rgb(195, 195, 195);
+}
