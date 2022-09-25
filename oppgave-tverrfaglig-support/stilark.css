@@ -9,9 +9,11 @@ html, body {
 body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(7, 1fr);
     grid-template-areas: 
     "t t"
+    "v h"
+    "v h"
     "v h"
     "v h"
     "v h"
@@ -32,10 +34,10 @@ header {
 }
 
 #venstre, #hoyre {
-    display: grid;
-    justify-items: center;
-    /* align-content: center; */
-    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     padding: 1em;
 }
 
