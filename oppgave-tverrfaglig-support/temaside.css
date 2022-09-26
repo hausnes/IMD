@@ -1,0 +1,113 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-template-areas:
+    "t t t t"
+    "m m v h"
+    "m m v h"
+    "m m v h"
+    "m m v h"
+    "m m v h"
+    "m m v h"
+    "m m v h"
+    "m m v h"
+    "m m v h"
+    "m m v h"
+    "m m v h"
+    ;
+}
+
+#tilbake {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 4%;
+}
+
+body > div {
+    /* border: 1px solid black; */
+    font-size: 2em;
+    padding: 1em;
+}
+
+#topp { grid-area: t; }
+#main { grid-area: m; }
+#venstre { grid-area: v; }
+#hoyre { grid-area: h; }
+
+#topp {
+    border-bottom: 1px solid black;
+    background-color: rgb(204, 246, 255);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+#topp img {
+    max-height: 20px;
+}
+#topp h1 {
+    font-size: 1em;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid black;
+    /* align-items: center; */
+}
+
+#main img, #main button {
+    max-width: 80%;
+}
+
+#venstre, #hoyre {
+    font-size: 1em;
+}
+
+#venstre img, #hoyre img {
+    max-width: 80%;
+}
+
+.toppHoyre {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1em;
+    font-size: 0.5em;
+}
+
+.toppHoyre a {
+    text-decoration: none;
+}
+.toppHoyre a:hover {
+    background-color: #c6e0ff;
+}
+
+.toppVenstre {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+}
