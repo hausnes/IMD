@@ -1,0 +1,45 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#hoved {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-template-areas: 
+    "n n"
+    "v h"
+    "v h"
+    "v h"
+    "v h"
+    "v h"
+    "v h"
+    "v h"
+    "v h"
+    "v h"
+    "v h"
+    "v h"
+    ;
+}
+
+nav { grid-area: n; }
+.venstre { grid-area: v; }
+.hoyre { grid-area: h; }
+
+#hoved > div {
+    /* display: flex;
+    flex-direction: column; */
+    padding: 2em;
+}
+
+/* Dersom du ønsker å enkelt endre størrelse på mange/alle bilder. */
+.tilpassetBilde {
+    /* width: 80%;
+    height: auto; */
+   
+    min-width: 200px;
+    max-width: 60%;
+}
