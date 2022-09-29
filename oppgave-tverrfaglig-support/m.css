@@ -25,7 +25,7 @@ html, body {
     ;
 }
 
-nav { grid-area: n; }
+#topp { grid-area: n; }
 .venstre { grid-area: v; }
 .hoyre { grid-area: h; }
 
@@ -42,4 +42,38 @@ nav { grid-area: n; }
    
     min-width: 200px;
     max-width: 60%;
+}
+
+#topp {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    background-color: rgb(189, 224, 255);
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    padding: 1em;
+}
+
+nav a:hover {
+    background-color: rgb(135, 199, 255);
+    transition: 1s;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
 }
