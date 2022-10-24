@@ -15,6 +15,11 @@ let breddeScreen = screen.width;
 console.log("bredde = " + bredde); // "bodyen", der "du kan lage nettside"
 console.log("bredde (screen) = " + breddeScreen); // heile skjermen
 
+let hogde = window.innerHeight;
+let hogdeScreen = screen.height;
+console.log("høgde = " + hogde);
+console.log("høgde (screen) = " + hogdeScreen);
+
 let plattform = navigator.platform;
 let nettleser = navigator.userAgent;
 let vendor = navigator.vendor;
