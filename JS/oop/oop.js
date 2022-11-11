@@ -1,0 +1,103 @@
+const spiller = document.querySelector("#spiller");
+const fiende = document.querySelector("#fiende");
+
+let spillerX = 100;
+let spillerY = 100;
+
+let fiendeX = 500;
+let fiendeY = 500;
+
+let arrowDownNede = false;
+let arrowRightNede = false;
+let arrowLeftNede = false;
+let arrowUpNede = false;
+
+document.addEventListener("keydown", function(e) {
+    // console.log(e.key);
+    // console.log(typeof e.key); // returnerer string
+    
+    if(e.key==="ArrowDown") {
+        console.log("Gå ned!");
+        // spillerY += 10;
+        // spiller.style.top = spillerY + "px";
+        arrowDownNede = true;
+    }
+    else {
+        arrowDownNede = false;
+        console.log("sluppet opp!");
+    }
+
+    if(e.key==="ArrowUp") {
+        arrowUpNede = true;
+    }
+    else {
+        arrowUpNede = false;
+    }
+
+    if(e.key==="ArrowLeft") {
+        arrowLeftNede = true;
+    }
+    else {
+        arrowLeftNede = false;
+    }
+
+    if(e.key==="ArrowRight") {
+        arrowRightNede = true;
+    }
+    else {
+        arrowRightNede = false;
+    }
+});
+
+function loop() {
+    if(arrowDownNede) {
+        spillerY += 10;
+    }
+    else {
+        spillerY += 0;
+    }
+    
+    if(arrowRightNede) {
+        spillerX += 10;
+    }
+    else {
+        spillerX += 0;
+    }
+
+    if(arrowLeftNede) {
+        spillerX -= 10;
+    }
+    else {
+        spillerX += 0;
+    }
+
+    if(arrowUpNede) {
+        spillerY -= 10;
+    }
+    else {
+        spillerY += 0;
+    }
+
+    // Forfølger spilleren
+    if(fiendeX > spillerX) {
+        fiendeX -= 1;
+    }
+    else {
+        fiendeX += 1;
+    }
+
+    if(fiendeY < spillerY) {
+        fiendeY += 1;
+    }   
+    else {
+        fiendeY -= 1;
+    }
+    
+    spiller.style.top = spillerY + "px";
+    spiller.style.left = spillerX + "px";
+    fiende.style.left = fiendeX + "px";
+    fiende.style.top = fiendeY + "px";
+    requestAnimationFrame(loop);
+}
+
+loop();
