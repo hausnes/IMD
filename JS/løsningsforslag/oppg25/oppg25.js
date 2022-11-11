@@ -9,7 +9,7 @@ console.log(tilfeldigtall);
 */
 let arrayTilfeldigeTall = [];
 
-for (let i = 0; i < 1000000000; i++) {
+for (let i = 0; i < 100; i++) {
     arrayTilfeldigeTall[i] = getRandomIntInclusive(1,20);
     //arrayTilfeldigeTall.push(getRandomIntInclusive(1,20));
 }
