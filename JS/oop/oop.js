@@ -8,9 +8,10 @@ let fiendeX = 500;
 let fiendeY = 500;
 
 let arrowDownNede = false;
+let arrowUpNede = false;
 let arrowRightNede = false;
 let arrowLeftNede = false;
-let arrowUpNede = false;
+let arrow = [arrowDownNede, arrowUpNede, arrowRightNede, arrowLeftNede];
 
 document.addEventListener("keydown", function(e) {
     // console.log(e.key);
@@ -22,34 +23,29 @@ document.addEventListener("keydown", function(e) {
         // spiller.style.top = spillerY + "px";
         arrowDownNede = true;
     }
-    else {
-        arrowDownNede = false;
-        console.log("sluppet opp!");
-    }
-
+    
     if(e.key==="ArrowUp") {
         arrowUpNede = true;
-    }
-    else {
-        arrowUpNede = false;
     }
 
     if(e.key==="ArrowLeft") {
         arrowLeftNede = true;
     }
-    else {
-        arrowLeftNede = false;
-    }
 
     if(e.key==="ArrowRight") {
         arrowRightNede = true;
     }
-    else {
-        arrowRightNede = false;
-    }
+});
+
+document.addEventListener("keyup", function() {
+    arrowDownNede = false;
+    arrowUpNede = false;
+    arrowRightNede = false;
+    arrowLeftNede = false;
 });
 
 function loop() {
+    // Sjekkar alle knappane/retningane og aukar med visse verdiar
     if(arrowDownNede) {
         spillerY += 10;
     }
