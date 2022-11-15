@@ -13,6 +13,8 @@ let arrowRightNede = false;
 let arrowLeftNede = false;
 let arrow = [arrowDownNede, arrowUpNede, arrowRightNede, arrowLeftNede];
 
+// Les meir om det å handtere ei joystick, fleire knappar samtidig osv. her: https://medium.com/@dovern42/handling-multiple-key-presses-at-once-in-vanilla-javascript-for-game-controllers-6dcacae931b7
+
 document.addEventListener("keydown", function(e) {
     // console.log(e.key);
     // console.log(typeof e.key); // returnerer string
