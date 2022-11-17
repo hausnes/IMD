@@ -46,9 +46,9 @@ class Fiende {
     }
 }
 
-let fiende1 = new Fiende(100,200,50,50,"red");
+let fiende1 = new Fiende(300,100,75,75,"blue");
 arrFiender.push(fiende1);
-let fiende2 = new Fiende(300,100,75,75,"blue");
+let fiende2 = new Fiende(100,200,50,50,"red");
 arrFiender.push(fiende2);
 
 // fiende1.tegn();
