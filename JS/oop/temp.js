@@ -10,7 +10,18 @@ class Fiende {
         this.bredde = bredde,
         this.hogde = hogde,
         this.farge = farge,
-        // this.opprett()
+        this.opprett()
+        // this.fiendeDiv = document.createElement("div"),
+        // this.fiendeDiv.class = "fiende";
+        // this.fiendeDiv.style.backgroundColor = this.farge;
+        // this.fiendeDiv.style.width = this.bredde + "px";
+        // this.fiendeDiv.style.height = this.hogde + "px";
+        // this.fiendeDiv.style.left = this.xPos + "px";
+        // this.fiendeDiv.style.top = this.yPos + "px";
+        // document.body.appendChild(this.fiendeDiv)
+    }
+
+    opprett() {
         this.fiendeDiv = document.createElement("div"),
         this.fiendeDiv.class = "fiende";
         this.fiendeDiv.style.backgroundColor = this.farge;
@@ -20,17 +31,6 @@ class Fiende {
         this.fiendeDiv.style.top = this.yPos + "px";
         document.body.appendChild(this.fiendeDiv)
     }
-
-    // opprett() {
-    //     let fiendeDiv = document.createElement("div");
-    //     fiendeDiv.class = "fiende";
-    //     fiendeDiv.style.backgroundColor = this.farge;
-    //     fiendeDiv.style.width = this.bredde + "px";
-    //     fiendeDiv.style.height = this.hogde + "px";
-    //     fiendeDiv.style.left = this.xPos + "px";
-    //     fiendeDiv.style.top = this.yPos + "px";
-    //     document.body.appendChild(fiendeDiv);
-    // }
 
     tegn() {
         this.fiendeDiv.style.left = this.xPos + "px";
@@ -46,10 +46,19 @@ class Fiende {
     }
 }
 
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+}
+  
+
 let fiende1 = new Fiende(300,100,75,75,"blue");
 arrFiender.push(fiende1);
 let fiende2 = new Fiende(100,200,50,50,"red");
 arrFiender.push(fiende2);
+let fiende3 = new Fiende(getRandomIntInclusive(50,500),getRandomIntInclusive(50,500),10,10,"pink");
+arrFiender.push(fiende3);
 
 // fiende1.tegn();
 // fiende2.tegn();
