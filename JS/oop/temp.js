@@ -57,7 +57,7 @@ let fiende1 = new Fiende(300,100,75,75,"blue");
 arrFiender.push(fiende1);
 let fiende2 = new Fiende(100,200,50,50,"red");
 arrFiender.push(fiende2);
-let fiende3 = new Fiende(getRandomIntInclusive(50,500),getRandomIntInclusive(50,500),10,10,"pink");
+let fiende3 = new Fiende(getRandomIntInclusive(50,500),getRandomIntInclusive(50,500),10,10,"pink"); // Ein tredje fiende som er tilfeldig plassert
 arrFiender.push(fiende3);
 
 // fiende1.tegn();
@@ -133,8 +133,9 @@ function gameLoop() {
         spillerY += 0;
     }
 
+    // Bevegelse til fienden/fiendane
     // Fiendeposisjonar, skal følge etter spelaren
-    for (let i = 0; i < arrFiender.length; i++) {
+    for (let i = 0; i < arrFiender.length; i++) { // Ser på kvar fiende som ligg inne i arrayen
         // let xPlassering = arrFiender[i].xPos;
         //console.log(xPlassering);
         if(arrFiender[i].xPos > spillerX) {
@@ -151,11 +152,10 @@ function gameLoop() {
             arrFiender[i].endreYpos(-fiendeFart); // Neg. forteikn for å flytte oppover
         }
 
-        arrFiender[i].tegn();
-        // arrFiender[i].fiendeDiv.style.left
+        arrFiender[i].tegn(); // Tegnar opp ny posisjon for så mange fiendar som det er i arrayen med fiendeobjekt
     }
 
-    spiller.style.top = spillerY + "px";
+    spiller.style.top = spillerY + "px"; // Tegnar opp spelaren sin nye plassering
     spiller.style.left = spillerX + "px";
     // fiende.style.left = fiendeX + "px";
     // fiende.style.top = fiendeY + "px";
