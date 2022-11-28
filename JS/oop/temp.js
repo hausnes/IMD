@@ -4,13 +4,14 @@ const spiller = document.querySelector("#spiller");
 let arrFiender = [];
 
 class Fiende {
-    constructor(xPos, yPos, bredde, hogde, hp, farge) {
+    constructor(xPos, yPos, bredde, hogde, hp, farge, lever) {
         this.xPos = xPos,
         this.yPos = yPos,
         this.bredde = bredde,
         this.hogde = hogde,
         this.farge = farge,
         this.hp = hp,
+        this.lever = lever,
         this.opprett()
         // this.fiendeDiv = document.createElement("div"),
         // this.fiendeDiv.class = "fiende";
@@ -75,11 +76,11 @@ function getRandomIntInclusive(min, max) {
 }
   
 
-let fiende1 = new Fiende(300,100,75,75,100,"blue");
+let fiende1 = new Fiende(300,100,75,75,100,"blue",true);
 arrFiender.push(fiende1);
-let fiende2 = new Fiende(100,200,50,50,100,"red");
+let fiende2 = new Fiende(100,200,50,50,100,"red",true);
 arrFiender.push(fiende2);
-let fiende3 = new Fiende(getRandomIntInclusive(50,500),getRandomIntInclusive(50,500),10,10,100,"pink"); // Ein tredje fiende som er tilfeldig plassert
+let fiende3 = new Fiende(getRandomIntInclusive(50,500),getRandomIntInclusive(50,500),10,10,100,"pink",true); // Ein tredje fiende som er tilfeldig plassert
 arrFiender.push(fiende3);
 
 // fiende1.tegn();
@@ -167,34 +168,40 @@ function gameLoop() {
         for (let i = 0; i < arrFiender.length; i++) { // Ser på kvar fiende som ligg inne i arrayen
             // let xPlassering = arrFiender[i].xPos;
             //console.log(xPlassering);
-            if(arrFiender[i].xPos > spillerX) {
-                arrFiender[i].endreXpos(-fiendeFart); // neg. forteikn for å flytte til venstre
-            }
-            else {
-                arrFiender[i].endreXpos(fiendeFart); // pos. forteikn for å flytte til høgre
-            }
-        
-            if(arrFiender[i].yPos < spillerY) {
-                arrFiender[i].endreYpos(fiendeFart); // Pos. forteikn for å flytte nedover
-            }   
-            else {
-                arrFiender[i].endreYpos(-fiendeFart); // Neg. forteikn for å flytte oppover
-            }
-    
-            // Angrep (helt slår fiende)
-            //console.log("angrepNede: " + angrepNede);
-            if(angrepNede) {
-                arrFiender[i].taSkade(10);
-                if(arrFiender[i].hentHP() <= 0 && arrFiender.length > 0) {
-                    console.log("Fjerner fiende...");
-                    arrFiender[i].fjern();
-                    arrFiender[i].splice(i,1);
+            if(arrFiender[i].lever) { // Dersom fienden ikkje er død så skal den flytte på seg.
+                if(arrFiender[i].xPos > spillerX) {
+                    arrFiender[i].endreXpos(-fiendeFart); // neg. forteikn for å flytte til venstre
                 }
+                else {
+                    arrFiender[i].endreXpos(fiendeFart); // pos. forteikn for å flytte til høgre
+                }
+            
+                if(arrFiender[i].yPos < spillerY) {
+                    arrFiender[i].endreYpos(fiendeFart); // Pos. forteikn for å flytte nedover
+                }   
+                else {
+                    arrFiender[i].endreYpos(-fiendeFart); // Neg. forteikn for å flytte oppover
+                }
+        
+                // Angrep (helt slår fiende)
+                //console.log("angrepNede: " + angrepNede);
+                if(angrepNede) {
+                    arrFiender[i].taSkade(10);
+                    if(arrFiender[i].hentHP() <= 0 && arrFiender.length > 0) {
+                        console.log("Fjerner fiende...");
+                        arrFiender[i].fjern();
+                        arrFiender.splice(i,1);
+                        return;
+                    }
+                }
+        
+                arrFiender[i].tegn(); // Tegnar opp ny posisjon for så mange fiendar som det er i arrayen med fiendeobjekt
             }
-    
-            arrFiender[i].tegn(); // Tegnar opp ny posisjon for så mange fiendar som det er i arrayen med fiendeobjekt
-        }
-    }
+            else {
+                console.log("Fienden er død. " + arrFiender[i].lever);
+            }    
+        } // for-løkke
+    } // if (det er nokre fiendar)
 
     spiller.style.top = spillerY + "px"; // Tegnar opp spelaren sin nye plassering
     spiller.style.left = spillerX + "px";
