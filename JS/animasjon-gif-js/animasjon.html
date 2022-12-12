@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="UTF-8">
+        <title>Animasjon</title>
+        <style>
+            #ninja {
+                width: 64px;
+                height: 64px;
+                background-image: url(figur.png);
+            }
+        </style>
+    </haed>
+    <body>
+        <div id="ninja"></div>
+        
+        <script>
+            var animasjonNinja = [
+                {backgroundPosition: "0 0"},
+                {backgroundPosition: "-384px 0"}
+            ];
+            var innstillingerNinja = {
+                duration: 750,
+                iterations: Infinity,
+                easing: "steps(6)"
+            };
+            
+            let ninja = document.getElementById("ninja");
+            let player = ninja.animate(animasjonNinja, innstillingerNinja);
+        </script>
+    </body>
+</html>
