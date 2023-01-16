@@ -47,6 +47,14 @@ let deltagere = [
         akt2  : 0, 
         akt3  : 0, 
         total : 0
+    },
+    { 
+        navn  : "John Arne", 
+        alder : 7884, 
+        akt1  : 0, 
+        akt2  : 0, 
+        akt3  : 0, 
+        total : 0
     }
 ];
 
@@ -79,3 +87,16 @@ function regnUtTotalPerDeltager(deltaker) {
 }
 
 console.log(regnUtTotalPerDeltager(deltagere[0]));
+
+/*
+    -----------------------
+    Registrering av brukere
+    -----------------------
+*/
+document.getElementById("skjemaRegistrerDeltager").addEventListener("submit", regDeltager);
+
+function regDeltager(evt) {
+    evt.preventDefault(); // Vi blokkerer standardmåten å gjøre det på (gå til et annet dokument)
+    console.log(evt);
+    
+}
