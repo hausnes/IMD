@@ -98,5 +98,38 @@ document.getElementById("skjemaRegistrerDeltager").addEventListener("submit", re
 function regDeltager(evt) {
     evt.preventDefault(); // Vi blokkerer standardmåten å gjøre det på (gå til et annet dokument)
     console.log(evt);
-    
+    // Henter ut og lagrer i variabler
+    let innlestNavn = document.getElementById("inpNavn").value;
+    let innlestAlder = document.getElementById("inpAlder").value;
+    // Lagrer den nye informasjonen som et objekt
+    let nyDeltager = { 
+        navn: innlestNavn, 
+        alder: innlestAlder, 
+        akt1: 0, 
+        akt2: 0, 
+        akt3: 0, 
+        total: 0 
+    };
+    // "Putter" inn (pusher) objektet i arrayen
+    deltagere.push(nyDeltager);
+    // Skriver ut en oppdatert liste
+    skrivUtDeltakerliste();
+}
+
+/*
+    ---------------------
+    Registrer poengsummer
+    ---------------------
+*/
+document.getElementById("skjemaRegistrerPoeng").addEventListener("submit", regPoeng);
+
+function regPoeng(evt) {
+    evt.preventDefault();
+    // Henter ut hvem vi skal endre data om, og 
+    let innlestNavn = document.getElementById("inpNavnScore").value;
+    let innlestAkt1 = document.getElementById("inpAkt1").value;
+    let innlestAkt2 = document.getElementById("inpAkt2").value;
+    let innlestAkt3 = document.getElementById("inpAkt3").value;
+    // Finner den vi ønsker å endre data om og gjennomfører endringen
+    for (let deltager )
 }

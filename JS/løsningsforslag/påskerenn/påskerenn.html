@@ -16,9 +16,20 @@
 
     <!-- Registrering av brukere -->
     <form id="skjemaRegistrerDeltager">
+        <label for="inpNavn">Navn:</label> 
         <input type="text" id="inpNavn" required autofocus placeholder="Navn">
+        <label for="inpAlder">Alder:</label>
         <input type="number" id="inpAlder" required placeholder="Alderen din">
         <button type="submit">Registrer deltager</button>
+    </form>
+
+    <!-- Registrering av scorer for deltaker -->
+    <form id="skjemaRegistrerPoeng">
+        <input type="text" id="inpNavnScore" placeholder="Hvem du skal endre score for">
+        <input type="number" id="inpAkt1" placeholder="Score, aktivite 1">
+        <input type="number" id="inpAkt2" placeholder="Score, aktivite 2">
+        <input type="number" id="inpAkt3" placeholder="Score, aktivite 3">
+        <button type="submit">Reg. score</button>
     </form>
 </body>
 </html>
