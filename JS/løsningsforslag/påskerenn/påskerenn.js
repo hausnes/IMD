@@ -131,5 +131,5 @@ function regPoeng(evt) {
     let innlestAkt2 = document.getElementById("inpAkt2").value;
     let innlestAkt3 = document.getElementById("inpAkt3").value;
     // Finner den vi ønsker å endre data om og gjennomfører endringen
-    for (let deltager )
+    // for (let deltager )
 }
