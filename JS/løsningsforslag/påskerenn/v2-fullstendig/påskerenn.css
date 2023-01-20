@@ -1,0 +1,25 @@
+body{
+    background-color: lightskyblue;
+}
+#midtstilt {
+    width: 650px;
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+    margin: 0 auto;
+}
+.boks {
+    width: 100%;
+    padding: 10px;
+}
+
+input{
+    width: 95%;
+    padding: 10px;
+}
+
+.overskrift {
+    background: url("bileter/chicken.webp") left top;
+    height: 300px;
+    width: 95%;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Påskerenn, prøve februar 2020</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="påskerenn.css">
+        <script src="påskerenn.js" defer></script>
+    </head>
+    <body>
+        <!-- Innhald -->
+        <div id="midtstilt">
+            <div class="boks overskrift">
+                <h1>Påskerenn</h1>
+                <p>
+                    Påskerennet 2023 blir endå meir spanande enn før. Knallharde
+                    konkurransar, store premiar, knekte ski.
+                </p>
+            </div>
+            <div class="boks">
+                <h2>Deltakerliste</h2>
+                <ul id="utDeltakerliste">
+                    <!-- Deltakerliste kjem her, via JS. -->
+                </ul>
+            </div>
+
+            <div class="boks">
+                <h2>Legg til ny bruker</h2>
+                <!-- Skjema for å registrere ny bruker -->
+                <form id="skjemaNyBruker">
+                    <!-- Navn -->
+                    <p>
+                        <input type="text" id="innNavn" placeholder="Fornavn på deltaker" required>
+                    </p>
+        
+                    <!-- Alder -->
+                    <p>
+                        <input type="number" id="innAlder" placeholder="Alder" required>
+                    </p>
+                    
+                    <!-- Knapp -->
+                    <button type="submit">Registrer bruker</button>
+                </form>
+            </div>
+
+            <div class="boks">
+                <h2>Registrer resultat</h2>
+                <!-- Skjema for å registrere ny bruker -->
+                <form id="skjemaRegistrereResultat">
+                    <!-- ID -->
+                    <p>
+                        <input type="number" id="innID" placeholder="ID på den du vil reg." min="1" required>
+                    </p>
+        
+                    <!-- Resultat 1 -->
+                    <p>
+                        <input type="number" id="innResultat1" placeholder="Resultat aktivitet 1" required>
+                    </p>
+
+                    <!-- Resultat 2 -->
+                    <p>
+                        <input type="number" id="innResultat2" placeholder="Resultat aktivitet 2" required>
+                    </p>
+
+                    <!-- Resultat 3 -->
+                    <p>
+                        <input type="number" id="innResultat3" placeholder="Resultat aktivitet 3" required>
+                    </p>
+                    
+                    <!-- Knapp -->
+                    <button type="submit">Registrer resultat</button>
+                </form>
+                <p id="utFeilmelding"></p>
+            </div>
+
+            <div class="boks">
+                <h2>Resultater frå konkuransane</h2>
+                <button id="visResultat">Vis resultat</button>
+                <ol id="utResultatliste">
+                    <!-- Her kjem resultatlista, generert frå JS. PS: Ville eigentleg skrive ut HTML-tabell. -->
+                </ol>
+            </div>
+
+        </div> <!-- Avslutter midtstilt -->
+    </body>
+</html>
