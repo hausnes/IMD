@@ -8,10 +8,8 @@ console.log(localStorage.antallBesok); // Undefined som utskrift første gang
 if (localStorage.antallBesok) {
     // Alt lagres som tekst i localStorage, så vi må gjøre om til tall
     localStorage.antallBesok = Number(localStorage.antallBesok) + 1;
-    // localStorage.setItem(antallBesok, Number(localStorage.antallBesok) + 1);
 } else {
     localStorage.antallBesok = 1;
-    // localStorage.setItem(antallBesok,1);
 }
 
 console.log("Dette er ditt " + localStorage.antallBesok + ". besøk på denne nettsiden.");
@@ -24,27 +22,28 @@ let kimHighscore = 33;
 localStorage.highscore = kimHighscore;
 localStorage.highscoreInnehaver = "Kim";
 
+// Alternativt kan vi lagre det i et objekt
 let score = [
     { navn: "Jo Bjørnar", highscore: 33},
     { navn: "Kim", highscore: 14}
 ];
 
-localStorage.temp = score;
+localStorage.resultat = score;
 
 // localstorage klarer ikke lagre dette på riktig måte
-// for( let s of localStorage.temp) {
+// for( let s of localStorage.resultat) {
 //     console.log(s);
 // }
 
 // Kilde til de neste linjene: https://www.w3schools.com/js/js_json_stringify.asp
 // Gjør array med objekt om til string slik at det kan lagres i localStorage
-localStorage.halvard = JSON.stringify(score);
-console.log("Stringen: " + localStorage.halvard);
+localStorage.resultatString = JSON.stringify(score);
+console.log("Stringen: " + localStorage.resultatString);
 
 // Gjør string i localstorage om til array med objekt igjen
-console.log(JSON.parse(localStorage.halvard));
+console.log(JSON.parse(localStorage.resultatString));
 
 // Vi kan slette all informasjonen i localstorage
 // localStorage.clear();
 
-console.log(localStorage.halvard);
+console.log(localStorage.resultatString);
