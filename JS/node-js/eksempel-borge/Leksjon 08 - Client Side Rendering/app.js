@@ -22,6 +22,6 @@ app.post('/insertMessage', (request,response) => {
 })
 
 //Starter opp applikasjonen
-app.listen(3000, function() { 
-    console.log("Server is up! Check http://localhost:3000")
+app.listen(80, function() { 
+    console.log("Server is up! Check http://localhost:80")
 })

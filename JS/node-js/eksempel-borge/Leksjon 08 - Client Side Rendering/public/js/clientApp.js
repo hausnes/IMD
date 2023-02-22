@@ -9,11 +9,16 @@ let refreshBtn = document.getElementById("refreshBtn")
 async function updateMessages() {
     let response = await fetch("/getMessages")
     let data = await response.json()
-    let innerHtml = ""
+    // let innerHtml = ""
+    messageDiv.innerHTML = "";
     for (const melding of data) {
-        innerHtml += "<p>" + melding.brukernavn + ": " + melding.melding + "</p>"
+        // innerHtml += "<p>" + melding.brukernavn + ": " + melding.melding + "</p>"
+        let p = document.createElement("p");
+        p.innerText = melding.brukernavn + ": " + melding.melding;
+        messageDiv.appendChild(p);
     }
-    messageDiv.innerHTML = innerHtml
+    // messageDiv.innerHTML = innerHtml
+
     setTimeout(updateMessages, 1000)
 }
 
