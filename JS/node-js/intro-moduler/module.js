@@ -2,10 +2,10 @@
     * Funksjon som regner ut den totale lengden av 2 stk. stringer.
     * @param {string} string1 - Tilfeldig string nr. 1
     * @param {string} string2 - Tilfeldig string nr. 2
-    * @example:
+    * @example
     * // returns 2:
     * printTotalLength("a","b");
-    * @example:
+    * @example
     * // returns 4:
     * printTotalLength("aa","bb");
     * @returns {Number} Returnerer summen av lengden på dei to stringane.  
