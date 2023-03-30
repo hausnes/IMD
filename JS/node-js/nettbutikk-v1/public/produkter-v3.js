@@ -40,17 +40,47 @@ async function visProdukter() {
 visProdukter();
 
 let handlekurvMap = new Map();
+let handlekurvArray = [];
 
 function leggTilVare(event) {
+    // Test for å se om vi kan hente ut id-en til produktet som skal legges til
     console.log(event.target.id);
     console.log(event.target);
 
+    // Dersom produktet ikke finnes i handlekurven, legg det til. 
+    // Hvis det finnes, øk antall med 1.
     if (handlekurvMap.has(event.target.id)) {
         handlekurvMap.set(event.target.id, handlekurvMap.get(event.target.id) + 1);
     } else {
         handlekurvMap.set(event.target.id, 1);
     }
     
+    // Test for å se om produktet er lagt til i handlekurven
     console.log("Handlekurv per nå: ");
     console.log(handlekurvMap);
+
+    // Konvertere map til array
+    handlekurvArray = Array.from(handlekurvMap);
+    console.log("Handlekurv som array: ");
+    console.table(handlekurvArray);
 }
+
+// Funksjon som sender handlekurven til serveren
+function sendOrdre() {
+    // Lager først et objekt som inneholder handlekurven og kundenavn
+    const body = {
+        handlekurv: handlekurvArray,
+        kundenavn: document.querySelector("#navn").value
+    };
+    
+    // Sender handlekurven til serveren
+    fetch("/sendHandlekurv", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(body)
+    })
+}
+
+document.querySelector("#knappBestill").addEventListener("click", sendOrdre);
