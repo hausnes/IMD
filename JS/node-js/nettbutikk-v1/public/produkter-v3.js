@@ -66,7 +66,7 @@ function leggTilVare(event) {
 }
 
 // Funksjon som sender handlekurven til serveren
-function sendOrdre() {
+async function sendOrdre() {
     // Lager først et objekt som inneholder handlekurven og kundenavn
     const body = {
         handlekurv: handlekurvArray,
@@ -74,7 +74,7 @@ function sendOrdre() {
     };
     
     // Sender handlekurven til serveren
-    fetch("/sendHandlekurv", {
+    await fetch("/sendHandlekurv", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

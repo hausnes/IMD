@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true })); // For å tolke data fra skjema
 app.use(express.json()); // For å tolke JSON-data
 
 // Funksjon/handler for å håndtere skjemaet
-async function formHandler(request, response) {
+function formHandler(request, response) {
     console.log("request.body: ");
     console.log(request.body);
     console.log("request.body.handlekurv: ");
@@ -47,7 +47,7 @@ async function formHandler(request, response) {
     }
 
     console.log("Ordre registrert!");
-    response.send("Din ordre er registrert!");
+    response.redirect("/"); // Redirect tilbake til rota
 }
 app.post("/sendHandlekurv", formHandler);
 
