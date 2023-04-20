@@ -5,16 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personlig side</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav>
+        <a href="/">Hjem</a>
+        <a href="personlig.html">Profil</a>
+        <a href="nybruker.html">Ny bruker</a>
+        <a href="login.html">Login</a>
+    </nav>
+
     <h1>Personlig side</h1>
     <p>
         Du er logget inn som: <span id="brukernavn">brukernavn</span>
     </p>
-
-    <script>
-        const brukernavn = document.getElementById("brukernavn");
-        // brukernavn.innerHTML = localStorage.getItem("username");
-    </script>
 </body>
 </html>
