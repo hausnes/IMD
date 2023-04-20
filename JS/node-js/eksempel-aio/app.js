@@ -6,10 +6,10 @@ const session = require('express-session');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true})); // For å kunne hente ut data fra POST-forespørsler (skjema, forms)
 
 app.use(session( {
-    secret: "Keep it secret",
+    secret: "RabarbraRegnboge", // Brukes til å kryptere sessionen
     resave: false,
     saveUninitialized : false
 }));
@@ -25,7 +25,29 @@ app.get('/', (req, res) => {
         return;
     }
     
-    res.send("Du er logget inn");
+    res.send(
+        `
+        <!DOCTYPE html>
+        <html lang="no">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Startside</title>
+            <link rel="stylesheet" href="style.css">
+        </head>
+        <body>
+            <nav>
+                <a href="/">Hjem</a>
+                <a href="personlig.html">Profil</a>
+                <a href="nybruker.html">Ny bruker</a>
+                <a href="login.html">Login</a>
+            </nav>
+            <h1>Startside</h1>
+            <p>Dette er startsiden</p>
+        </body>
+        </html>
+        `
+    );
 });
 
 app.get('/personlig.html', (req, res) => {
@@ -43,25 +65,51 @@ app.post('/login', (req, res) => {
     console.log(req.body.username);
     console.log(req.body.password);
 
-    // Kontroller om brukernavn og passord er riktig opp mot databasen
-    const stmt = db.prepare('SELECT * FROM brukere WHERE brukernavn = ? AND passord = ?'); 
-    const row = stmt.get(req.body.username, req.body.password); 
-    console.log(row); // Dersom vi får ut noe her, så er brukernavn og passord riktig
+    // Lagrer passordet i en variabel
+    let password = req.body.password;
 
-    if (row === undefined) { // Dersom vi ikke får noe ut, så er brukernavn og passord feil
+    // Sjekk om brukernavn og passord er riktig opp mot databasen, der passordet er kryptert
+    const stmt = db.prepare('SELECT * FROM brukere WHERE brukernavn = ?');
+    const row = stmt.get(req.body.username);
+    console.log(row); // Dersom vi får ut noe her, så er brukernavn riktig
+
+    if (row === undefined) { // Dersom vi IKKE får noe ut, så er brukernavn feil
         req.session.logedIn = false;
         res.redirect("/login.html");
         return;
     }
 
-    if (req.body.username == row.brukernavn && // Dersom brukernavn og passord stemmer overens, så skal vi logge brukeren inn
-        req.body.password == row.passord ) {
+    // Sjekk om passordet er riktig
+    const result = bcrypt.compareSync(password, row.passord);
+    console.log("Resultatet av å sammenligne passord: " + result);
+
+    if (result == true) { // Dersom passordet er riktig, så skal vi logge brukeren inn
         req.session.logedIn = true;
         res.redirect("/");
     } else { // Ellers skal vi sende brukeren tilbake til login-siden
         req.session.logedIn = false;
         res.redirect("/login.html");
     }
+
+    // Kontroller om brukernavn og passord er riktig opp mot databasen (dette fungerer bare uten krypterte passord, dvs. de to første oppføringene i databasen)
+//     const stmt = db.prepare('SELECT * FROM brukere WHERE brukernavn = ? AND passord = ?'); 
+//     const row = stmt.get(req.body.username, req.body.password); 
+//     console.log(row); // Dersom vi får ut noe her, så er brukernavn og passord riktig
+
+//     if (row === undefined) { // Dersom vi IKKE får noe ut, så er brukernavn og/eller passord feil
+//         req.session.logedIn = false;
+//         res.redirect("/login.html");
+//         return;
+//     }
+
+//     if (req.body.username == row.brukernavn && // Dersom brukernavn og passord stemmer overens, så skal vi logge brukeren inn
+//         req.body.password == row.passord ) {
+//         req.session.logedIn = true;
+//         res.redirect("/");
+//     } else { // Ellers skal vi sende brukeren tilbake til login-siden
+//         req.session.logedIn = false;
+//         res.redirect("/login.html");
+//     }
 });
 
 app.post('/nybruker', (req, res) => {
