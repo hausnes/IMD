@@ -59,6 +59,21 @@ app.get('/personlig.html', (req, res) => {
     res.sendFile(__dirname + "/personlig.html");
 });
 
+// Funksjon som henter ut brukerinformasjonen til den innloggede brukeren
+app.get('/hentBrukerinfo', (req, res) => {
+    if (req.session.logedIn !== true) {
+        res.redirect("/login.html");
+        return;
+    }
+
+    const stmt = db.prepare('SELECT * FROM brukere WHERE brukernavn = ?');
+    const row = stmt.get(req.session.username); // Vi lagret dette tidligere i login-funksjonen
+    console.log("Inne i hentBrukerinfo:");
+    console.log(row); // Dersom vi får ut noe her, så er brukernavn riktig
+
+    res.send(row);
+});     
+
 app.post('/login', (req, res) => {
     // Testing av at vi får inn data fra login-skjemaet
     console.log(req.body);
@@ -85,6 +100,7 @@ app.post('/login', (req, res) => {
 
     if (result == true) { // Dersom passordet er riktig, så skal vi logge brukeren inn
         req.session.logedIn = true;
+        req.session.username = row.brukernavn; // Slik av vi lagret brukernavnet i sessionen (og kan bruke det senere, som i "hentBrukerinfo")
         res.redirect("/");
     } else { // Ellers skal vi sende brukeren tilbake til login-siden
         req.session.logedIn = false;
