@@ -84,8 +84,8 @@ app.post('/login', (req, res) => {
     let password = req.body.password;
 
     // Sjekk om brukernavn og passord er riktig opp mot databasen, der passordet er kryptert
-    const stmt = db.prepare('SELECT * FROM brukere WHERE brukernavn = ?');
-    const row = stmt.get(req.body.username);
+    const sql = db.prepare('SELECT * FROM brukere WHERE brukernavn = ?');
+    const row = sql.get(req.body.username);
     console.log(row); // Dersom vi får ut noe her, så er brukernavn riktig
 
     if (row === undefined) { // Dersom vi IKKE får noe ut, så er brukernavn feil
@@ -101,7 +101,7 @@ app.post('/login', (req, res) => {
     if (result == true) { // Dersom passordet er riktig, så skal vi logge brukeren inn
         req.session.logedIn = true;
         req.session.username = row.brukernavn; // Slik av vi lagret brukernavnet i sessionen (og kan bruke det senere, som i "hentBrukerinfo")
-        res.redirect("/");
+        res.redirect("/personlig.html");
     } else { // Ellers skal vi sende brukeren tilbake til login-siden
         req.session.logedIn = false;
         res.redirect("/login.html");
