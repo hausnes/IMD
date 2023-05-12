@@ -1,0 +1,67 @@
+Oppgave 1
+Lag to statiske HTML-CSS-JS-sider i public-mappen som vi kan navigere mellom, i tillegg til de dynamiske sidene (root og about).
+
+Forslag: Lag en statisk meny i et av HTML-dokumentene som du kopierer inn i de andre dokumentene. HTML-tagen nav skal brukes, med en ul-liste med li-elementer inni.
+
+Oppgave 2
+Lag et skjema som henter inn en navn, e-post og en fødselsdato, og vis at dette kan sendes og brukes på serveren.
+
+Eventuelt, om tid
+Jobber med enkel database for å klargjøre neste steg.
+
+Oppgave 3
+Opprett en database som skal lagre informasjonen fra oppgave 2 (navn, epost, fødselsdato) i SQLiteStudio (el.l.).
+
+Oppgave 4
+Installer better-sqlite3.
+Importer sqlite3 til app.js.
+Lag ei rute som returnerer alle data frå databasen og sjekk resultatet (JSON).
+Oppdater formHandler til å skrive data til db etter at skjema er fylt ut.
+Lag en "vanlig" nettside som henter utvalgte data fra databasen og presenterer disse på en fin måte på nettsiden. createElement og appendChild.
+
+Repetisjonsoppgave
+Lag en NodeJS-app som gjør følgende:
+Steg 1:
+Tilby noen varer (minst 3 stk.), med bilde(r), info om produktet og en knapp for å bestille. Varene skal hentes fra en database.
+Steg 2:
+La det samtidig være mulig å bestille varer (fra samme side), eksempelvis ved velge 2 stk av vare nr. 1. Når brukeren trykker på "bestill"-knappen så blir informasjonen lagret i en database.
+
+Juks:
+npm install better-sqlite3
+
+// Database
+const sqlite3 = require('better-sqlite3');
+const db = sqlite3('../imd-eks.db', {verbose: console.log});
+
+// Callback funksjon for når noen besøker brukerlisten og vil se alle brukere
+function brukerlisteRoute(request, response) {
+    const sql = db.prepare("SELECT * FROM brukere");
+    const brukere = sql.all();
+    console.log(brukere);
+    response.send(brukere);
+}
+app.get('/brukerliste', brukerlisteRoute);
+
+// Skrive til db, inne i funksjonen formHandler
+const sql = db.prepare("INSERT INTO brukere (navn, epost, fodt) VALUES (?, ?, ?)");
+const info = sql.run(request.body.navn, request.body.epost, request.body.fodt);
+console.log("Antall endringar gjort: " + info.changes);
+console.log("lastInsertRowid: " + info.lastInsertRowid);
+
+// For å få ei fin utskrift på ei "vanleg" nettside, lag html og js i public-mappa: viseliste.html:
+
+let utskrift = document.querySelector("div");
+
+async function viseListe() {
+    const response = await fetch("/brukerliste");
+    const data = await response.json();
+    for(const linje of data) {
+        utskrift.innerHTML += `
+            <p>
+                ${linje.navn} ${linje.epost} ${linje.fodt}
+            </p>
+        `;
+    }
+}
+
+viseListe();
