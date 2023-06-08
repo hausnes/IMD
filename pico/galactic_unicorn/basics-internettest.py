@@ -76,5 +76,4 @@ def sync_time():
 # Check whether the RTC time has changed and if so redraw the display
 def redraw_display_if_reqd():
     # Dette koyrer dersom me har nettverk
-
-gu.set_brightness(0.5)
+    gu.set_brightness(0.5)
