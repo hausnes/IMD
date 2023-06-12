@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
         return;
     }
     
-    res.send(
+    res.send( /* NB: Dette er en dårlig måte å generere HTML på, men vises for eks. skyld */
         `
         <!DOCTYPE html>
         <html lang="no">
