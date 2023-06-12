@@ -40,7 +40,7 @@ app.use(express.static(publicDirectoryPath));
 */
 
 // Dersom den som besøker nettsiden går til localhost:3000/start, så skal vi sende dem til index.html
-// Du kan også besøke denne siden ved å gå til localhost:3000/ uten å skrive noe mer
+// Du kan også besøke denne siden ved å gå til localhost:3000/ uten å skrive noe mer siden inderx.html ligger i public-mappen
 app.get('/start', (req, res) => {
     res.sendFile('index.html');
 });
@@ -49,16 +49,16 @@ app.get('/start', (req, res) => {
 app.get('hentUtstyrsoversikt', (req, res) => {
     // Kontrollere at brukeren har rettigheter til å hente ut utstyrsoversikten
 
-    // Kontrollerer først at brukeren er logget inn
+    // Steg 1: Kontrollerer først at brukeren er logget inn
     if (req.session.logedIn !== true) {
         res.redirect("/login.html");
-        return;
+        return; // Går ikke videre i koden
     }
     
-    // Kontrollerer at brukeren er riktig brukertype. NB: Denne må skrives om til å passe din database, og du må hente ut brukerrollen fra databasen
+    // Steg 2: Kontrollerer at brukeren er riktig brukertype. NB: Denne må skrives om til å passe din database, og du må hente ut brukerrollen fra databasen før du kan sjekke dette
     if (brukerrolle !== "admin") { // Dersom brukeren ikke er admin
         res.redirect("/login.html");
-        return;
+        return; // Går ikke videre i koden
     }
     
     // Dersom brukeren er logget inn og er admin, så kan vi hente ut utstyrsoversikten
