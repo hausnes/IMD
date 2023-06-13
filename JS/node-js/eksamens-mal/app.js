@@ -47,7 +47,7 @@ app.get('/start', (req, res) => {
 
 // En rute for å hente ut alle datamaskinene i databasen
 app.get('hentUtstyrsoversikt', (req, res) => {
-    // Kontrollere at brukeren har rettigheter til å hente ut utstyrsoversikten
+    // Kontrollere at brukeren har rettigheter til å hente ut utstyrsoversikten, i to steg
 
     // Steg 1: Kontrollerer først at brukeren er logget inn
     if (req.session.logedIn !== true) {
@@ -61,7 +61,7 @@ app.get('hentUtstyrsoversikt', (req, res) => {
         return; // Går ikke videre i koden
     }
     
-    // Dersom brukeren er logget inn og er admin, så kan vi hente ut utstyrsoversikten
+    // Resultat: Dersom brukeren er logget inn og er admin, så kan vi hente ut utstyrsoversikten
     const stmt = db.prepare('SELECT * FROM utstyr');
     const rows = stmt.all();
     console.log(rows);
